@@ -4,7 +4,7 @@ import { selectCount, selectHeight,selectWidth } from '../redux/selectors';
 import { useState } from 'react';
 
 
-export default function Counter({ name }) {
+export default function Add({ name }) {
   const 
     count = useSelector(selectCount),
     height = useSelector(selectHeight),    

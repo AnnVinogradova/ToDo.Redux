@@ -4,7 +4,7 @@ import { selectWidth } from '../redux/selectors';
 import { useState } from 'react';
 
 
-export default function Width() {
+export default function Toggle() {
   const
     width = useSelector(selectWidth),
     dispatch = useDispatch(),

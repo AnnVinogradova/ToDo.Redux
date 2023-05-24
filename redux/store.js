@@ -1,21 +1,29 @@
 import { createStore } from 'redux';
 
 // import {createWrapper, HYDRATE} from 'next-redux-wrapper';
-import { INCREMENT, DECREMENT, ADD_TODO, DELETE_TODO, TOGGLE_TODO } from './actions.js';
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from './actions.js';
 
+const initialState = {
+  todos: []
+};
 
-function counterReducer(state = { value: 0, height: 10, width: 10 }, action) {
+export default function counterReducer(state = initialState, action) {
   switch (action.type) {
-    // case HYDRATE:
-    //   return {...state, ...action.payload};
-    case INCREMENT:
-      return Object.assign({}, state, { value: state.value + 1 });  
-    case DECREMENT:
-      return Object.assign({}, state, { value: state.value - 1 });
-    case ADD_HEIGHT:
-      return Object.assign({}, state, { height: state.height + action.delta });
-    case ADD_WIDTH:
-      return Object.assign({}, state, { width: state.width + action.delta });
+    case ADD_TODO:
+      return Object.assign({}, state, {
+        todos: [...state.todos, { id: Date.now(), text: action.payload.text, completed: false }]
+      });
+    case DELETE_TODO:
+      return Object.assign({}, state, {
+        todos: state.todos.filter(todo => todo.id !== action.payload.id)});
+    case TOGGLE_TODO:
+      return Object.assign({}, state, {
+        todos: state.todos.map(todo => {
+          if (todo.id === action.payload.id) {
+            return Object.assign({}, todo, { completed: !todo.completed });
+          }
+          return todo;
+        })});
     default:
       return state;
   }

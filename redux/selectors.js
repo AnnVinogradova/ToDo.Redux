@@ -1,3 +1,6 @@
-export const selectCount = store => store.value;
-export const selectHeight = store => store.height;
-export const selectWidth = store => store.width;
+
+export const getTodos = (store) => store.todos;
+
+export const getCompletedTodos = (store) => store.todos.filter(todo => todo.completed);
+
+export const getIncompleteTodos = (store) => store.todos.filter(todo => !todo.completed);

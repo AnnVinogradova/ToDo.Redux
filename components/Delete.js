@@ -4,7 +4,7 @@ import { selectHeight } from '../redux/selectors';
 import { useState } from 'react';
 
 
-export default function Height() {
+export default function Delete() {
   const
     height = useSelector(selectHeight),
     dispatch = useDispatch(),
