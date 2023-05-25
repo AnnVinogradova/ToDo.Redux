@@ -1,14 +1,9 @@
-import Add from './Add';
-import Delete from './Delete';
-import Toggle from './Toggle';
-
+import Components from './Components';
 
 export default function App() {
   return <>
     <hr />
-    <Add/>
-    <Delete />
-    <Toggle />
+    <Components/>
     <hr />
     </>;
 }
