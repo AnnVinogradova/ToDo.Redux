@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from './actions';
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, REMOVE_ALL_TODOS } from './actions';
 
 const initialState = {
   todos: []
@@ -25,6 +25,11 @@ export default function reducer (state = initialState, action) {
               return todo;
             })
           });
+
+        case REMOVE_ALL_TODOS:
+              return Object.assign({}, state, {
+                todos: []
+            });
       
         default:
           return state;

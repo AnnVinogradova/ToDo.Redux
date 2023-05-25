@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, toggleTodo, deleteTodo} from '../redux/actions';
-import { getTodos, getCompletedTodos, getIncompleteTodos } from '../redux/selectors';
+import { addTodo, toggleTodo, deleteTodo, removeAllTodos} from '../redux/actions';
+import { getTodos, getCompletedTodos, getIncompleteTodos} from '../redux/selectors';
 import { useState } from 'react';
 
 
@@ -27,6 +27,9 @@ export default function Component () {
     dispatch(deleteTodo(id));
   };
 
+  const handleDeleteAllTodos = () => {
+    dispatch(removeAllTodos());
+  };
 
   return (
     <>
@@ -55,6 +58,7 @@ export default function Component () {
       </ul>
       <p>Completed: {completedTodos.length}</p>
       <p>Incomplete: {incompleteTodos.length}</p>
+      <button className='btn-delete-all' onClick={handleDeleteAllTodos}>Delete All</button>
       </div>
     </>
   );
