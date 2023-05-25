@@ -1,7 +1,9 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, toggleTodo, deleteTodo } from '../redux/actions';
+import { addTodo, toggleTodo, deleteTodo} from '../redux/actions';
 import { getTodos, getCompletedTodos, getIncompleteTodos } from '../redux/selectors';
+import { useState } from 'react';
+
 
 export default function Component () {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ export default function Component () {
   const handleAddTodo = (event) => {
     event.preventDefault();
     if (!text) return;
-    dispatch(addTodo(Date.now(), text));
+    dispatch(addTodo(text));
     setText('');
   };
 
@@ -25,8 +27,10 @@ export default function Component () {
     dispatch(deleteTodo(id));
   };
 
+
   return (
     <>
+    <div className='container'>
       <form onSubmit={handleAddTodo}>
         <input
           type="text"
@@ -45,12 +49,13 @@ export default function Component () {
               onChange={() => handleToggleTodo(todo.id)}
             />
             <span>{todo.text}</span>
-            <button onClick={() => handleDeleteTodo(todo.id)}>Remove</button>
+            <button className='delete-btn' onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
       <p>Completed: {completedTodos.length}</p>
       <p>Incomplete: {incompleteTodos.length}</p>
+      </div>
     </>
   );
 };
