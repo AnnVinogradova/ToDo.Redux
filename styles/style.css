@@ -78,7 +78,7 @@ body {
   }
   
 li:hover {
-  border: 2px dashed rgb(14, 119, 151);
+  outline: 2px dashed rgb(14, 119, 151);
 }
 
 li:before {
